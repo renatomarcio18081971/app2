@@ -12,7 +12,9 @@ import { RouterModule } from '@angular/router';
 
 import { ROUTES } from './app.routes';
 import { EnviaremailComponent } from './enviaremail/enviaremail.component';
-import { OfertaComponent } from './oferta/oferta.component'
+import { OfertaComponent } from './oferta/oferta.component';
+import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
+import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { OfertaComponent } from './oferta/oferta.component'
     RestaurantesComponent,
     DiversaoComponent,
     EnviaremailComponent,
-    OfertaComponent
+    OfertaComponent,
+    ComoUsarComponent,
+    OndeFicaComponent
   ],
   imports: [
     BrowserModule,

@@ -43,12 +43,12 @@ export class OfertasService {
             valor: 31.90,
             destaque: true,
             imagens: [
-                {url: "./assets/ofertas/3/img1.jpg"},
-                {url: "./assets/ofertas/3/img2.jpg"},
-                {url: "./assets/ofertas/3/img3.jpg"},
-                {url: "./assets/ofertas/3/img4.jpg"},
-                {url: "./assets/ofertas/3/img5.jpg"},
-                {url: "./assets/ofertas/3/img6.jpg"}
+                {url: "./assets/ofertas/4/img1.jpg"},
+                {url: "./assets/ofertas/4/img2.jpg"},
+                {url: "./assets/ofertas/4/img3.jpg"},
+                {url: "./assets/ofertas/4/img4.jpg"},
+                {url: "./assets/ofertas/4/img5.jpg"},
+                {url: "./assets/ofertas/4/img6.jpg"}
             ]
         }
     ]
@@ -60,5 +60,10 @@ export class OfertasService {
     public obterOfertasPorCategoria(categoria: string): Oferta[] {
         let pesquisa = this.ofertas.filter(x => x.categoria == categoria)
         return pesquisa
+    }
+
+    public obterOfertaPorId(id: number): Oferta{
+        let pesquisa = this.ofertas.find(x => x.id == id)
+        return pesquisa !== undefined ? pesquisa : new Oferta(10, 'categoria', 'titulo', 'descricao', 'anunciante', 10, true, [])
     }
 }
