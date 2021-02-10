@@ -57,4 +57,8 @@ export class OfertasService {
         return this.ofertas
     }
 
+    public obterOfertasPorCategoria(categoria: string): Oferta[] {
+        let pesquisa = this.ofertas.filter(x => x.categoria == categoria)
+        return pesquisa
+    }
 }

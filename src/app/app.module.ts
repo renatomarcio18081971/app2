@@ -8,6 +8,11 @@ import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { DiversaoComponent } from './diversao/diversao.component';
+import { RouterModule } from '@angular/router';
+
+import { ROUTES } from './app.routes';
+import { EnviaremailComponent } from './enviaremail/enviaremail.component';
+import { OfertaComponent } from './oferta/oferta.component'
 
 @NgModule({
   declarations: [
@@ -16,11 +21,14 @@ import { DiversaoComponent } from './diversao/diversao.component';
     HomeComponent,
     RodapeComponent,
     RestaurantesComponent,
-    DiversaoComponent
+    DiversaoComponent,
+    EnviaremailComponent,
+    OfertaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]
