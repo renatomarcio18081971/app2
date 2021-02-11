@@ -27,7 +27,7 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     EnviaremailComponent,
     OfertaComponent,
     ComoUsarComponent,
-    OndeFicaComponent
+    OndeFicaComponent,
   ],
   imports: [
     BrowserModule,
