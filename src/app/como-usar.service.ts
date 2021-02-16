@@ -31,7 +31,7 @@ export class ComoUsarService {
 
     public obterComoUsarPorId(id: number): ComoUsar {
         let pesquisa = this.ComoUsar.find(x => x.id == id)
-        return pesquisa !== undefined ? pesquisa : new ComoUsar(0, '')
+        return pesquisa!
     }
     
 }

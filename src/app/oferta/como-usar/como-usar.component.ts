@@ -13,6 +13,7 @@ import { ComoUsar } from 'src/app/shared/como-usar.model';
 export class ComoUsarComponent implements OnInit {
 
   private comoUsar: ComoUsar | undefined
+  public textoComoUsar: string | undefined
   
   constructor(
                 private route: ActivatedRoute,
@@ -20,10 +21,10 @@ export class ComoUsarComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    debugger
     let id = this.route.parent?.snapshot.params['id']
     if (id !== undefined){
         this.comoUsar = this.comoUsarService.obterComoUsarPorId(id)
+        this.textoComoUsar = this.comoUsar.descricao
     }
   }
 

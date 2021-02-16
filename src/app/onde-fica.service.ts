@@ -28,4 +28,9 @@ export class OndeFicaService {
 			"descricao": "Estrada Maria das Graças, 12, Salvador - BA "
 		}
 	]
+
+	public obterOndeFicaPorId(id: number): OndeFica{
+		let pesquisa = this.OndeFica.find(a => a.id == id)
+		return pesquisa!
+	}
 }
