@@ -6,76 +6,26 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class OfertasService {
 
+    private API: string = "https://localhost:44347/api/";
+
     constructor(private http: HttpClient) {}
 
-
-    public ofertas: Oferta[] = [
-        {
-            id: 1,
-            categoria: "restaurante",
-            titulo: "Super Burger",
-            descricao_oferta: "Rodízio de Mini-hambúrger com opção de entrada.",
-            anunciante: "Original Burger",
-            valor: 29.90,
-            destaque: true,
-            imagens: [
-                {url: "./assets/ofertas/1/img1.jpg"},
-                {url: "./assets/ofertas/1/img2.jpg"},
-                {url: "./assets/ofertas/1/img3.jpg"},
-                {url: "./assets/ofertas/1/img4.jpg"}
-            ]
-        },
-        {
-            id: 2,
-            categoria: "restaurante",
-            titulo: "Cozinha Mexicana",
-            descricao_oferta: "Almoço ou Jantar com Rodízio Mexicano delicioso.",
-            anunciante: "Mexicana",
-            valor: 32.90,
-            destaque: true,
-            imagens: [
-                {url: "./assets/ofertas/2/img1.jpg"},
-                {url: "./assets/ofertas/2/img2.jpg"},
-                {url: "./assets/ofertas/2/img3.jpg"},
-                {url: "./assets/ofertas/2/img4.jpg"}
-            ]
-        
-        },
-        {
-            id: 4,
-            categoria: "diversao",
-            titulo: "Estância das águas",
-            descricao_oferta: "Diversão garantida com piscinas, trilhas e muito mais.",
-            anunciante: "Estância das águas",
-            valor: 31.90,
-            destaque: true,
-            imagens: [
-                {url: "./assets/ofertas/4/img1.jpg"},
-                {url: "./assets/ofertas/4/img2.jpg"},
-                {url: "./assets/ofertas/4/img3.jpg"},
-                {url: "./assets/ofertas/4/img4.jpg"},
-                {url: "./assets/ofertas/4/img5.jpg"},
-                {url: "./assets/ofertas/4/img6.jpg"}
-            ]
-        }
-    ]
-
-    public obterOfertas(): Oferta[] {
-        return this.ofertas
+    public obterOfertas(): Observable<Oferta[]> {
+        return this.http.get<Oferta[]>(this.API.concat("ofertas"))
     }
 
-    public obterOfertasPorCategoria(categoria: string): Oferta[] {
-        let pesquisa = this.ofertas.filter(x => x.categoria == categoria)
-        return pesquisa
+    public obterOfertasPorCategoria(categoria: string): Observable<Oferta[]> {
+        let str = this.API.concat("ofertas/", categoria, "/categoria")
+        return this.http.get<Oferta[]>(str)
     }
 
-    public obterOfertaPorId(id: number): Oferta{
-        let pesquisa = this.ofertas.find(x => x.id == id)
-        return pesquisa !== undefined ? pesquisa : new Oferta(10, 'categoria', 'titulo', 'descricao', 'anunciante', 10, true, [])
+    public obterOfertaPorId(id: number): Observable<Oferta> {
+        let str = this.API.concat("ofertas/", id.toString())
+        return this.http.get<Oferta>(str)
     }
 
-    public pesquisaOfertas(valor: string): Oferta[] {
-        let pesquisa = this.ofertas.filter(x => x.descricao_oferta == valor)
-        return pesquisa
-    }
+    // public pesquisaOfertas(valor: string): Oferta[] {
+    //     let pesquisa = this.ofertas.filter(x => x.descricao_oferta == valor)
+    //     return pesquisa
+    // }
 }

@@ -15,7 +15,10 @@ export class DiversaoComponent implements OnInit {
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit(): void {
-    this.ofertas = this.ofertasService.obterOfertasPorCategoria('diversao')
+       this.ofertasService.obterOfertasPorCategoria('diversao')
+                          .subscribe(resultado => {
+                            this.ofertas = resultado
+                          })
   }
 
 }

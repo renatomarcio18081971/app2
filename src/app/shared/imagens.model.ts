@@ -1,3 +1,3 @@
 export class Imagem {
-    constructor(public url: string) {}
+    constructor(public id: number, public url: string, public ofertaid: number) {}
 }

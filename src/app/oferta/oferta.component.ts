@@ -17,7 +17,8 @@ export class OfertaComponent implements OnInit {
   // private tempoObservableSubscription!: Subscription
   // private meuObservableSubscription!: Subscription
 
-  public oferta?: Oferta | undefined
+  public oferta?: Oferta
+  public listaDeOfertas: Oferta[] = []
   
   constructor(
                 private route: ActivatedRoute, 
@@ -25,9 +26,17 @@ export class OfertaComponent implements OnInit {
              ) { }
 
   ngOnInit(): void {
+    var retorno = this.ofertaService.obterOfertas()
+                                    .subscribe((data: Oferta[]) => 
+                                    { 
+                                        this.listaDeOfertas = data
+                                    } )
       let id = this.route.snapshot.params['id']
       if (id !== undefined){
-          this.oferta = this.ofertaService.obterOfertaPorId(id)
+          this.ofertaService.obterOfertaPorId(id)
+                             .subscribe(resultado => {
+                                this.oferta = resultado
+                             })
       }
 
       // let tempo = interval(2000)

@@ -11,12 +11,15 @@ import { OfertasService } from '../ofertas.service'
 })
 export class RestaurantesComponent implements OnInit {
 
-  public ofertas: Oferta[] | undefined
+  public ofertas: Oferta[] = []
 
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit(): void {
-    this.ofertas = this.ofertasService.obterOfertasPorCategoria('restaurante')
+       this.ofertasService.obterOfertasPorCategoria('restaurante')
+                          .subscribe(resultado => {
+                            this.ofertas = resultado
+                          }) 
   }
 
 }
