@@ -1,6 +1,13 @@
+import { Observable } from 'rxjs'
 import { Oferta } from './shared/oferta.model'
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class OfertasService {
+
+    constructor(private http: HttpClient) {}
+
 
     public ofertas: Oferta[] = [
         {
@@ -65,5 +72,10 @@ export class OfertasService {
     public obterOfertaPorId(id: number): Oferta{
         let pesquisa = this.ofertas.find(x => x.id == id)
         return pesquisa !== undefined ? pesquisa : new Oferta(10, 'categoria', 'titulo', 'descricao', 'anunciante', 10, true, [])
+    }
+
+    public pesquisaOfertas(valor: string): Oferta[] {
+        let pesquisa = this.ofertas.filter(x => x.descricao_oferta == valor)
+        return pesquisa
     }
 }
