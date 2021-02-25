@@ -1,36 +1,20 @@
-import { OndeFica } from "./shared/onde-fica.model";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { OndeFicar } from "./shared/onde-ficar.model";
 
+
+@Injectable()
 export class OndeFicaService {
+	
+	private API: string = "https://localhost:44347/api/";
 
-    public OndeFica: OndeFica[] = [
-		{
-			"id": 1,
-			"descricao": "Avenida João da Silva, 255, São Paulo - SP"
-		},
-		{
-			"id": 2,
-			"descricao": "Rua Francisco Mendes, 1000, Rio de Janeiro - SP "
-		},
-		{
-			"id": 3,
-			"descricao": "Avenida Lúcio Rodrigues Alves, 33, Fortaleza - CE"
-		},
-		{
-			"id": 4,
-			"descricao": "Avenida José de Oliveira, 550, Campo Grande - MS"
-		},
-		{
-			"id": 5,
-			"descricao": "Avenida Júlia Abrão, 77, São Paulo - SP"
-		},
-		{
-			"id": 6,
-			"descricao": "Estrada Maria das Graças, 12, Salvador - BA "
-		}
-	]
+	constructor(
+					private http: HttpClient
+				) {}
 
-	public obterOndeFicaPorId(id: number): OndeFica{
-		let pesquisa = this.OndeFica.find(a => a.id == id)
-		return pesquisa!
+	public obterOndeFicaPorId(id: number): Observable<OndeFicar> {
+		let pesquisa = this.API.concat('ofertas/ondeficar/', id.toString())
+		return this.http.get<OndeFicar>(pesquisa);
 	}
 }

@@ -21,7 +21,9 @@ export class OndeFicaComponent implements OnInit {
     let id = this.route.parent?.snapshot.params['id']
     if (id !== undefined){
         let onde = this.ondeFicaService.obterOndeFicaPorId(id)
-        this.textoOndeFica = onde.descricao
+                                       .subscribe(resultado => {
+                                          this.textoOndeFica = resultado.descricao
+                                       })
     }
   }
 

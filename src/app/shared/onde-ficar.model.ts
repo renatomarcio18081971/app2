@@ -1,4 +1,4 @@
-export class OndeFica {
+export class OndeFicar {
 
     constructor(
                     public id: number,
