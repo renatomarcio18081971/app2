@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { interval, Observable, Subject } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
 import { OfertasService } from '../ofertas.service'
 import { Oferta } from '../shared/oferta.model'
 import 'rxjs/add/operator/switchMap'
@@ -8,7 +8,7 @@ import 'rxjs/add/operator/debounceTime'
 
 import { mergeMap, switchMap, retry, 
   map, catchError, filter, scan, debounceTime } from 'rxjs/operators';
-import { debug } from 'console'
+
 
 @Component({
   selector: 'app-topo',
